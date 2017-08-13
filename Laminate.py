@@ -218,29 +218,3 @@ class Laminate:
             # cut width to form the previous generation laminate
             cutWidth = (baseWidth * self.getSinAnglesMultiplier(1, maxindex)) - (self.widthKerf * self.kerfMultiplier((i + 1)))
         #print self.cutCmd
-
-    def outputOriginalLaminateRequirements(self):
-        width = self.getBaseCutWidth()
-        numberCuts = self.getNumberCuts(1)
-        totalWidth = numberCuts * width
-
-        generation = 1
-        angle = self.cutCmd["angle"][0]
-        cutLength = self.getCutLength(generation, angle)
-        totalLength = self.getPreviousGenerationHeight(cutLength, angle, self.heightDesign)
-
-        print "**************************************"
-        print "*** Original Laminate Requirements ***"
-        print "**************************************"
-
-        print "To Adhere To Desired Design Dimensions of: ", self.lengthDesign, " x ", self.heightDesign
-
-        print "Cut Width: ", width
-
-        print "Number of Cuts to make: ", numberCuts
-
-        print "Width of wood required for design: ", totalWidth
-
-        print "Length of wood required for design: ", totalLength
-
-        print "**************************************"
